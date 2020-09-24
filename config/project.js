@@ -1,5 +1,4 @@
-let projectList = [
-  {
+let projectList = [{
     project: "stu-caries-application",
     name: "龋齿筛查",
     port: 6501,
@@ -50,7 +49,7 @@ let projectList = [
 ];
 
 //添加常用方案 以端口号作为唯一id
-const semsPort = [6501];
+const semsPort = [];
 projectList = projectList.filter((i) => {
   return semsPort.length ? semsPort.includes(i.port) : true;
 });
