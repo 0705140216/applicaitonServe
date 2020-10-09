@@ -8,7 +8,7 @@
     "serve": "node config/start.js",
     "build": "node config/build.js",
     "build:preview": "node config/build.js preview",
-        "build:test": "node config/build.js test",
+    "build:test": "node config/build.js test",
     "pull": "node config/pull.js"
   }
 }
