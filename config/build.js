@@ -27,6 +27,8 @@ const preview = process.argv[2];
 let exceData = 'npm run build:prod'
 if (preview == 'preview') {
   exceData = 'npm run build:preview'
+}else if(preview == 'test'){
+  exceData = 'npm run build:test'
 }
 console.log(exceData)
 
