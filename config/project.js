@@ -49,7 +49,7 @@ let projectList = [{
 ];
 
 //添加常用方案 以端口号作为唯一id
-const semsPort = [];
+const semsPort = [6501,6502,8888,8889];
 projectList = projectList.filter((i) => {
   return semsPort.length ? semsPort.includes(i.port) : true;
 });

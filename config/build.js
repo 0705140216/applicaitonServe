@@ -24,7 +24,7 @@ const sub_apps_name = project.map(i => {
 })
 
 const preview = process.argv[2];
-let exceData = 'npm run build:prod'
+let exceData = 'npm run build'
 if (preview == 'preview') {
   exceData = 'npm run build:preview'
 }else if(preview == 'test'){
