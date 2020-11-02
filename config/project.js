@@ -24,15 +24,45 @@ let projectList = [{
   },
   {
     project: "stu-diseasewarn-application",
-    name: "疾病预警",
+    name: "传染病预警",
     port: 6505,
     applicationId: 10,
   },
   {
     project: "stu-morningexam-application",
-    name: "晨检",
+    name: "晨午(晚)检",
     port: 6506,
     applicationId: 11,
+  },
+    {
+    project: "stu-classroom-application",
+    name: "教室管理",
+    port: 6507,
+    applicationId: 12,
+  },
+    {
+    project: "stu-faculty-application",
+    name: "教职工管理",
+    port: 6508,
+    applicationId: 13,
+  },
+    {
+    project: "stu-clinic-application",
+    name: "医务室管理",
+    port: 6509,
+    applicationId: 14,
+  },
+    {
+    project: "stu-dormitory-application",
+    name: "宿舍管理",
+    port: 6510,
+    applicationId: 15,
+  },
+    {
+    project: "stu-campushealth-application",
+    name: "校园卫生管理",
+    port: 6511,
+    applicationId: 16,
   },
   {
     project: "stu-health-admin",
@@ -49,7 +79,7 @@ let projectList = [{
 ];
 
 //添加常用方案 以端口号作为唯一id
-const semsPort = [6501,6502,8888,8889];
+const semsPort = [];
 projectList = projectList.filter((i) => {
   return semsPort.length ? semsPort.includes(i.port) : true;
 });

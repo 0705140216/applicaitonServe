@@ -8,8 +8,11 @@ node_modules
 /stu-morningexam-application
 /stu-physical-application
 /stu-sickleave-application
-
-
+/stu-classroom-application
+/stu-faculty-application
+/stu-clinic-application
+/stu-dormitory-application
+/stu-campushealth-application
 
 # Log files
 npm-debug.log*
