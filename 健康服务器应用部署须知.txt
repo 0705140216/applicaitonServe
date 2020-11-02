@@ -1,0 +1,85 @@
+健康平台测试部署
+
+183.249.1.200:60202 web/web2020
+
+-----------------------------------------------
+
+应用
+
+
+health-test.qdsgvision.com_caries  龋齿 6501
+
+health-test.qdsgvision.com_physical 体检 6502
+
+health-test.qdsgvision.com_sickleave 因病缺课/请假管理
+ 6503
+
+health-test.qdsgvision.com_illnesreport 疾病报备 6504(标书没有先舍弃)
+
+health-test.qdsgvision.com_diseasewarn 传染病预警 6505
+
+health-test.qdsgvision.com_morningexam 晨午(晚)检
+ 6506
+
+health-test.qdsgvision.com_classroom 教室管理
+ 6507
+
+health-test.qdsgvision.com_faculty 教职工管理
+ 6508
+
+health-test.qdsgvision.com_clinic 医务室管理
+ 6509
+
+health-test.qdsgvision.com_dormitory 宿舍管理
+ 6510
+
+health-test.qdsgvision.com_campushealth 校园卫生管理
+ 6511
+
+
+
+------------------------------------------------------------------
+
+健康平台-业务
+
+health-test.qdsgvision.com
+
+
+------------------------------------------------------------------
+
+健康平台-运维
+
+health-console-test.qdsgvision.com
+
+-------------------------------------------------------------------
+应用id(applicationId设置在请求头中用于区分不同应用)
+
+1  设备管理    
+
+2  视力筛查    
+ 
+3  龋齿筛查    
+ 
+4  体检筛查    
+ 
+5  自由筛查-视力
+ 
+6  自由筛查-龋齿
+ 
+7  自由筛查-体检
+ 
+8  请假/因病缺课
+ 
+9  病情报备    
+
+10 传染病预警    
+
+11 晨午(晚)检
+
+12 教室管理
+13 教职工管理
+14 医务室管理
+15 宿舍管理
+16 校园卫生管理
+
+  
