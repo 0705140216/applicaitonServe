@@ -64,6 +64,12 @@ let projectList = [{
     port: 6511,
     applicationId: 16,
   },
+    {
+    project: "stu-diagnose-application",
+    name: "诊疗管理",
+    port: 6512,
+    applicationId: 17,
+  },
   {
     project: "stu-health-admin",
     name: "学生健康平台运维",
