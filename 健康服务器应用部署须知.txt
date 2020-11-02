@@ -36,7 +36,8 @@ health-test.qdsgvision.com_dormitory 宿舍管理
 health-test.qdsgvision.com_campushealth 校园卫生管理
  6511
 
-
+health-test.qdsgvision.com_diagnose 诊疗管理
+ 6512
 
 ------------------------------------------------------------------
 
@@ -81,5 +82,7 @@ health-console-test.qdsgvision.com
 14 医务室管理
 15 宿舍管理
 16 校园卫生管理
+17 诊疗管理
+ 
 
   
