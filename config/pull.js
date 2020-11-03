@@ -27,7 +27,8 @@ const maxBufferLength = 2000 * 1024;
 
 function start() {
   sub_apps.forEach(async i => {
-    console.log(`${i} 开始从git仓库下载`)
+  	let name=project.find(item=>item.project==i).name
+    console.log(`${i} - ${name} 开始从git仓库下载`)
 
     const {
       stdout,
@@ -35,7 +36,7 @@ function start() {
     } = await exec("git pull", {
       cwd: path.resolve(i),
     });
-    console.log(i, "成功", stdout);
+    console.log(i,name, "成功", stdout);
   });
 
 };

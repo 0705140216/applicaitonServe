@@ -39,7 +39,7 @@ function start() {
     let port = project.find(item => item.project == i).port || '暂无端口'
     console.log(`${i} 开始启动... 端口：localhost:${port} 全部启动需要时间，请稍加等候，或刷新浏览器即可`)
 
-    await exec('npm run serve', {
+    await exec('yarn run serve', {
       cwd: path.resolve(i),
       maxBuffer: maxBufferLength
     });

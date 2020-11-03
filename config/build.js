@@ -24,11 +24,11 @@ const sub_apps_name = project.map(i => {
 })
 
 const preview = process.argv[2];
-let exceData = 'npm run build'
+let exceData = 'yarn run build'
 if (preview == 'preview') {
-  exceData = 'npm run build:preview'
+  exceData = 'yarn run build:preview'
 }else if(preview == 'test'){
-  exceData = 'npm run build:test'
+  exceData = 'yarn run build:test'
 }
 console.log(exceData)
 
