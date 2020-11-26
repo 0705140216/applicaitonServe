@@ -85,14 +85,13 @@ function handlerForEach(connect){
 
 
 function upload(i,connect) { // 上传
-    let name=project.find(item=>item.project==i).name  //应用名称
-    let localName=project.find(item=>item.project==i).localName //本地文件夹名称
-    let severName=project.find(item=>item.project==i).severName  //网络服务名称
-    let localPath=path.join(sub_app_ath,i,localName)
+    let {name,localName,severName}=project.find(item=>item.project==i)  //应用名称//本地文件夹名称 //网络服务名称
     let allPath=path.join(sub_app_ath,'allTest',localName)
+    console.log(`************************************************************************`)
     console.log(`应用:${name}【${localName}.zip】准备上传至${severName}文件夹中`)
     console.log(`本地上传目录:${allPath}.zip`)
     console.log(`服务器上传目录:${server_url}${severName}/${localName}.zip`)
+    console.log(`************************************************************************`)
     connect.sftp((err, sftp) => {
         if (err) throw err
         // 第一个参数为要上传的文件名, 第二个参数为服务器目录
@@ -103,7 +102,6 @@ function upload(i,connect) { // 上传
                 connect.end()
                 return
             }
-            console.log('========'+name+'上传成功========')
             unzipShell({name,severName,localName},connect)
         })
     })
@@ -111,7 +109,7 @@ function upload(i,connect) { // 上传
  
 function unzipShell({name,severName,localName},connect) {    // 服务器解压命令
     connect.shell((err, stream) => {
-        console.log('========'+name+'解压中========')
+        console.log(name+'解压中')
         if (err) throw err
         let buf = "";
         stream.on('close', err => {
@@ -123,8 +121,9 @@ function unzipShell({name,severName,localName},connect) {    // 服务器解压�
         }).on('data', data => {
              buf += data
         })
-        stream.write(`cd ${server_url}${severName} && unzip ${localName}.zip \nnext\n`)
-        stream.write(`rm -r -f ${localName}.zip \nexit\n`)
-        console.log(`${name}上传成功`)
+        stream.write(`cd ${server_url}${severName} \nnext\n`)
+        stream.write(`unzip -o ${localName}.zip \nnext\n`)
+        stream.write(`rm -r -f ${localName}.zip \nnext\n`)
+        console.log(`******************${name}上传成功***********************************`)
     })
 }
