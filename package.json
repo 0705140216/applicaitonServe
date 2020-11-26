@@ -10,7 +10,8 @@
     "build": "node config/build.js",
     "build:preview": "node config/build.js preview",
     "build:test": "node config/build.js test",
-    "pull": "node config/pull.js"
+    "pull": "node config/pull.js",
+    "upload": "node config/upload.js"
   },
   "dependencies": {
     "compressing": "^1.5.1",
