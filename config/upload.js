@@ -126,12 +126,7 @@ function unzipShell({name,severName,localName},connect) {    // 服务器解压�
         }).on('data', data => {
              buf += data
         })
-        // 服务器端的命令行运行
-        // 主要就是到目录下解压文件后复制到上一层
-        // 再删除掉解压出来的文件夹
-        stream.write(`cd ${server_url}${severName} && unzip ${localName}.zip`)
-        // stream.write('cd '+server_url+' && unzip dist.zip \nnext\n')
-        // stream.write('cd dist && /bin/cp -r -f * ../ \nnext\n')
-        // stream.write('cd ../ && rm -r -f dist \nexit\n')
+        stream.write(`cd ${server_url}${severName} && unzip ${localName}.zip \nnext\n`)
+        stream.write(`cd ../ && rm -r -f ${localName}.zip \nexit\n`)
     })
 }
