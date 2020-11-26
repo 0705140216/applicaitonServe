@@ -120,13 +120,11 @@ function unzipShell({name,severName,localName},connect) {    // 服务器解压�
                 console.error(err)
                 return
             }
-            console.info('++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
-            console.info('======== '+name+'SUCCESS!! ========')
-            console.info('++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
         }).on('data', data => {
              buf += data
         })
         stream.write(`cd ${server_url}${severName} && unzip ${localName}.zip \nnext\n`)
-        stream.write(`cd ../ && rm -r -f ${localName}.zip \nexit\n`)
+        stream.write(`rm -r -f ${localName}.zip \nexit\n`)
+        console.log(`${name}上传成功`)
     })
 }
