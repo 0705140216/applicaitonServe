@@ -47,18 +47,34 @@ const serverList=[
 ]
 let server_key=0;
  
+
+
+//遍历循环上传,每次上传建立连接池,因为一个连接池太卡,导致程序崩溃
+function handlerForEach(){
+    sub_apps.forEach(async i => {
+        setTimeout(()=>{
+            conn(i)
+        },500)
+    });
+  }
+  
+  handlerForEach()
+  
  
-function conn() {   // 连接服务器
+function conn(i) {   // 连接服务器
     var connect = new Client()
     var name=serverList[server_key].nm
+    let {name:projectName}=project.find(item=>item.project==i)  
     connect.on('ready', () => {
         console.log('========连接'+name+'成功========')
-        console.log(`正在上传${JSON.stringify(sub_apps_name)}至服务器请稍后`)
-        handlerForEach(connect)
-        // upload(name,connect)
+        console.log(`正在上传【${projectName}】至服务器请稍后`)
+        upload(i,connect)
     }).on('error', (err) => {
-        console.error(err)
-        console.log('========连接'+ name +'出错========')
+        //链接出错尝试再次连接
+        setTimeout(() => {
+            console.error(`链接出错，正在尝试重新链接【${projectName}】至服务器请稍后`)
+            conn(i)
+        }, 2000);
     }).on('end', () => {
         console.log('========连接'+ name +'关闭========')
         if(serverList[server_key+1]&&name){
@@ -73,19 +89,11 @@ function conn() {   // 连接服务器
 }
  
 //链接
-conn()
-
-//遍历循环上传
-function handlerForEach(connect){
-  sub_apps.forEach(async i => {
-    upload(i,connect)
-  });
-}
-
+// conn()
 
 
 function upload(i,connect) { // 上传
-    let {name,localName,severName}=project.find(item=>item.project==i)  //应用名称//本地文件夹名称 //网络服务名称
+    let {name,localName,severName,port}=project.find(item=>item.project==i)  //应用名称//本地文件夹名称 //网络服务名称
     let allPath=path.join(sub_app_ath,'allTest',localName)
     console.log(`************************************************************************`)
     console.log(`应用:${name}【${localName}.zip】准备上传至${severName}文件夹中`)
@@ -93,7 +101,7 @@ function upload(i,connect) { // 上传
     console.log(`服务器上传目录:${server_url}${severName}/${localName}.zip`)
     console.log(`************************************************************************`)
     connect.sftp((err, sftp) => {
-        if (err) throw err
+        // if (err) throw err
         // 第一个参数为要上传的文件名, 第二个参数为服务器目录
         sftp.fastPut(`${allPath}.zip`, `${server_url}${severName}/${localName}.zip`, (err, res) => { 
             if (err) {
@@ -102,15 +110,14 @@ function upload(i,connect) { // 上传
                 connect.end()
                 return
             }
-            unzipShell({name,severName,localName},connect)
+            unzipShell({name,severName,localName,port},connect)
         })
     })
 }
  
-function unzipShell({name,severName,localName},connect) {    // 服务器解压命令
+function unzipShell({name,severName,localName,port},connect) {    // 服务器解压命令
     connect.shell((err, stream) => {
-        console.log(name+'解压中')
-        if (err) throw err
+        // if (err) throw err
         let buf = "";
         stream.on('close', err => {
             connect.end()
@@ -123,7 +130,7 @@ function unzipShell({name,severName,localName},connect) {    // 服务器解压�
         })
         stream.write(`cd ${server_url}${severName} \nnext\n`)
         stream.write(`unzip -o ${localName}.zip \nnext\n`)
-        stream.write(`rm -r -f ${localName}.zip \nnext\n`)
-        console.log(`******************${name}上传成功***********************************`)
+        stream.write(`rm -r -f ${localName}.zip \nexit\n`)
+        console.log(`******************${port}${name}上传成功***********************************`)
     })
 }
