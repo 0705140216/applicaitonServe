@@ -43,8 +43,8 @@ const exec = util.promisify(require('child_process').exec);
 function build() {
 
   sub_apps.forEach(async i => {
-    let name=project.find(item=>item.project==i).name
-    let localName=project.find(item=>item.project==i).localName
+    let {name,localName,distName,port}=project.find(item=>item.project==i)
+
     console.log(`${i} ${name}开始打包`)
     const {
       stdout,
@@ -53,7 +53,11 @@ function build() {
       cwd: path.resolve(i)
     });
     //并启动压缩方法
-    compress(i,name,localName);
+    if(preview=='test'){
+      compress(i,name,localName);
+    }else{
+      compressDist(i,name,distName,port);
+    }
     console.log(i, '成功', stdout)
     // console.error(i, '失败', stderr)
   });
@@ -66,18 +70,49 @@ process.on('unhandledRejection', (reason, p) => {
 });
 
 
+//打包测试服务器
 function compress (i,name,localName) {
-  console.log(`*******${name}压缩中*******`);
+    console.log(`*******${name}压缩中*******`);
 
-  let localPath=path.join(sub_app_ath,i,localName)
-  let allPath=path.join(sub_app_ath,'allTest',localName)
+    let localPath=path.join(sub_app_ath,i,localName)
+    let allPath=path.join(sub_app_ath,'allTest',localName)
+    fs.exists( `${allPath}.zip`,function(exists){
+      if(exists){
+        fs.unlink(`${allPath}.zip`, function(err){
+      if(err){
+            throw err;
+      }
+          //使用导入的compressing插件压缩我们需要的文件
+      //第一个参数是要压缩的文件夹，第二个参数是压缩过后的压缩包名称
+      zipFile(localPath,allPath,function(err)
+      {
+        console.log(`*******${name}压缩成功*******`);
+      },true)
+  })
+      }
+      else{
+      //使用导入的compressing插件压缩我们需要的文件
+      //第一个参数是要压缩的文件夹，第二个参数是压缩过后的压缩包名称
+      zipFile(localPath,allPath,function(err)
+        {
+          console.log(`*******${allPath}.zip${name}压缩成功*******`);
+        },true)
+      }
+  });
+}
+
+//打包正式
+function compressDist (i,name,distName,port) {
+  console.log(`*******正式${name}压缩中*******`);
+  let localPath=path.join(sub_app_ath,i,distName)
+  let allPath=path.join(sub_app_ath,'allDist',`${port}${name}${distName}`)
   fs.exists( `${allPath}.zip`,function(exists){
     if(exists){
       fs.unlink(`${allPath}.zip`, function(err){
-     if(err){
+    if(err){
           throw err;
-     }
-         //使用导入的compressing插件压缩我们需要的文件
+    }
+        //使用导入的compressing插件压缩我们需要的文件
     //第一个参数是要压缩的文件夹，第二个参数是压缩过后的压缩包名称
     zipFile(localPath,allPath,function(err)
     {
@@ -94,8 +129,6 @@ function compress (i,name,localName) {
       },true)
     }
 });
-
-    
 }
 
 function zipFile(files,zip_name,callback,isIgnoreBase)

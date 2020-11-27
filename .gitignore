@@ -15,6 +15,7 @@ node_modules
 /stu-campushealth-application
 /stu-diagnose-application
 /allTest
+/allDist
 
 # Log files
 npm-debug.log*
