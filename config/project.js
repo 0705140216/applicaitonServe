@@ -130,7 +130,7 @@ let projectList = [{
 const semsPort = [];
 
 projectList = projectList.filter((i) => {
-  return semsPort.length ? !semsPort.includes(i.port) : true;
+  return semsPort.length ? semsPort.includes(i.port) : true;
 });
 
 exports.project = projectList;
