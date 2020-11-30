@@ -54,7 +54,7 @@ function handlerForEach(){
     sub_apps.forEach(async i => {
         setTimeout(()=>{
             conn(i)
-        },500)
+        },1000)
     });
   }
   
