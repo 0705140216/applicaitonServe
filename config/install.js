@@ -63,7 +63,7 @@ function install() {
     console.error(i, "失败", stderr);
   });
 }
-install();
+// install();
 
 process.on("unhandledRejection", (reason, p) => {
   console.log("执行失败", p, "reason:", reason);
