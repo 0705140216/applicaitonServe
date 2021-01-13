@@ -107,6 +107,51 @@ let projectList = [{
     severName:'health-test.qdsgvision.com_diagnose'
   },
   {
+    project: "stu-diagnose-application",
+    name: "诊疗管理",
+    port: 6512,
+    applicationId: 17,
+    localName:'diagnose_test',
+    distName:'diagnose_dist',
+    severName:'health-test.qdsgvision.com_diagnose'
+  },
+  {
+    project: "stu-eyescreen-application",
+    name: "视力筛查",
+    port: 6513,
+    applicationId: 2,
+    localName:'eyescreen_test',
+    distName:'eyescreen_dist',
+    severName:'health-test.qdsgvision.com_eyescreen'
+  },
+   {
+    project: "stu-dieasescreen-application",
+    name: "常见病筛查",
+    port: 6514,
+    applicationId: 18,
+    localName:'dieasescreen_test',
+    distName:'dieasescreen_dist',
+    severName:'health-test.qdsgvision.com_dieasescreen'
+  },
+  {
+    project: "stu-schoolenv-application",
+    name: "教学环境监测",
+    port: 6515,
+    applicationId: 19,
+    localName:'schoolenv_test',
+    distName:'schoolenv_dist',
+    severName:'health-test.qdsgvision.com_schoolenv'
+  },
+  {
+    project: "stu-questionnaire-application",
+    name: "问卷管理",
+    port: 6516,
+    applicationId: 20,
+    localName:'questionnaire_test',
+    distName:'questionnaire_dist',
+    severName:'health-test.qdsgvision.com_questionnaire'
+  },
+  {
     project: "stu-health-admin",
     name: "学生健康平台运维",
     port: 8889,

@@ -39,6 +39,18 @@ health-test.qdsgvision.com_campushealth 校园卫生管理
 health-test.qdsgvision.com_diagnose 诊疗管理
  6512
 
+health-test.qdsgvision.com_eyescreen 视力筛查
+ 6513
+
+health-test.qdsgvision.com_dieasescreen 常见病筛查
+ 6514
+
+health-test.qdsgvision.com_schoolenv 教学环境监测
+ 6515
+
+health-test.qdsgvision.com_question
+naire  问卷管理 6516
+
 ------------------------------------------------------------------
 
 健康平台-业务
@@ -84,5 +96,8 @@ health-console-test.qdsgvision.com
 16 校园卫生管理
 17 诊疗管理
  
-
+18 常见病筛查
+ 
+19 教学环境监测
+20 问卷管理
   
