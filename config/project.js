@@ -152,6 +152,15 @@ let projectList = [{
     severName:'health-test.qdsgvision.com_questionnaire'
   },
   {
+    project: "stu-constitution-application",
+    name: "体质筛查",
+    port: 6517,
+    applicationId: 21,
+    localName:'constitution_test',
+    distName:'constitution_dist',
+    severName:'health-test.qdsgvision.com_constitution'
+  },
+  {
     project: "stu-health-admin",
     name: "学生健康平台运维",
     port: 8889,

@@ -51,6 +51,8 @@ health-test.qdsgvision.com_schoolenv 教学环境监测
 health-test.qdsgvision.com_question
 naire  问卷管理 6516
 
+health-test.qdsgvision.com_constitution  体质筛查 6517
+
 ------------------------------------------------------------------
 
 健康平台-业务
@@ -100,4 +102,5 @@ health-console-test.qdsgvision.com
  
 19 教学环境监测
 20 问卷管理
+21 体质筛查
   
