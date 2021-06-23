@@ -14,6 +14,12 @@ node_modules
 /stu-dormitory-application
 /stu-campushealth-application
 /stu-diagnose-application
+/stu-bianalysis-application
+/stu-constitution-application
+/stu-schoolenv-application
+/stu-dieasescreen-application
+/stu-eyescreen-application
+/stu-questionnaire-application
 /allTest
 /allDist
 
